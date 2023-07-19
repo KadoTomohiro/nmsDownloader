@@ -57,5 +57,13 @@ function listUpResolved(json) {
             resolvedList.push(...dependencyResolvedList)
         })
     }
+
+    // 暫定
+    if(json.packages) {
+        Object.values(json.packages).forEach(moduleJson => {
+            const dependencyResolvedList = listUpResolved(moduleJson)
+            resolvedList.push(...dependencyResolvedList)
+        })
+    }
     return resolvedList
 }
